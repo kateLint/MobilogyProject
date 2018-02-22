@@ -11,6 +11,7 @@ import java.util.List;
  */
 
 public class Contact {
+
     private String _id;
     private String _name = "";
     private String _phone_number;
@@ -34,20 +35,6 @@ public class Contact {
     public Contact(String id, int _contact_color){
         this._id = id;
         this._contact_color = _contact_color;
-    }
-
-    // constructor
-    public Contact(String name, String _phone_number){
-        this._name = name;
-        this._phone_number = _phone_number;
-    }
-
-    public Contact(String id, String name, String _phone_number, String imageUri, int _contact_color) {
-        this._id = id;
-        this._name = name;
-        this._phone_number = _phone_number;
-        this._contact_color = _contact_color;
-        this.imageUri = imageUri;
     }
 
     // getting ID
@@ -84,10 +71,6 @@ public class Contact {
         return _contact_color;
     }
 
-    public void set_contact_color(int _contact_color) {
-        this._contact_color = _contact_color;
-    }
-
     public int getSmsCount() {
         return smsCount;
     }
@@ -118,19 +101,6 @@ public class Contact {
         }
     };
 
-    public static Comparator<Contact> COMPARE_BY_NAME = new Comparator<Contact>() {
-        public int compare(Contact one, Contact other) {
-            return one._name.compareTo(other._name);
-        }
-    };
-
-    public List<String> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    public void setPhoneNumbers(List<String> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
-    }
     public void setPhoneNumbersList(String phoneNumbers) {
         this.phoneNumbers.add(phoneNumbers);
     }

@@ -12,6 +12,11 @@ import java.util.List;
 
 public class ArraysCompareUtils {
 
+    /**
+     * Util for Array manipulation
+     * @param contact1
+     * @param contact
+     */
     protected static void setSMSNumbers(Contact contact1, Contact contact){
         if(contact1.getSmsCount() != 0 ){
             contact.setSmsCount(contact1.getSmsCount());
@@ -29,13 +34,11 @@ public class ArraysCompareUtils {
 
     protected static void joinArrays(List<Contact> contacts, List<Contact> smsNumbers)
     {
-
         if(contacts.size() > smsNumbers.size()){
             joinToMainArray(contacts, smsNumbers);
         }else{
             joinToMainArray(smsNumbers, contacts);
         }
-
     }
 
     private static void joinToMainArray(List<Contact>  first, List<Contact>  second)
@@ -51,21 +54,4 @@ public class ArraysCompareUtils {
         }
     }
 
-    protected static ArrayList createArrayListFromCursor(Cursor cursor) {
-
-        ArrayList lstContacts = new ArrayList<>();
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-            String phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            String imageUri = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI));
-            String id = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID));
-
-            Contact contact = new Contact(id, name, phoneNumber, imageUri, 0);
-            lstContacts.add(contact);
-            cursor.moveToNext();
-        }
-        return lstContacts;
-    }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by amirlubashevsky on 20/02/2018.
+ * DB Class for manipulationg data of color, that stay in app
  */
 
 public class DatabaseHandler  extends SQLiteOpenHelper {
@@ -89,8 +89,6 @@ public class DatabaseHandler  extends SQLiteOpenHelper {
                     Integer.parseInt(cursor.getString(1)));
             // return contact
             return contact;
-
-
     }
 
 

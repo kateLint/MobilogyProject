@@ -18,12 +18,9 @@ public class UtilsCursor {
 
     protected static  ArrayList<Contact> getCallDetails(Activity activity) {
         ArrayList<Contact> contacts = new ArrayList<>();
-        StringBuffer sb = new StringBuffer();
         Cursor managedCursor = activity.managedQuery(CallLog.Calls.CONTENT_URI, null,
                 null, null, null);
         int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
-        int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
-        int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
         int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
         int callNameCache = managedCursor
                 .getColumnIndex(android.provider.CallLog.Calls.CACHED_NAME);
@@ -31,26 +28,19 @@ public class UtilsCursor {
         while (managedCursor.moveToNext()) {
             String callName = managedCursor.getString(callNameCache);
             String phNumber = managedCursor.getString(number);
-            String callType = managedCursor.getString(type);
-            String callDate = managedCursor.getString(date);
-            Date callDayTime = new Date(Long.valueOf(callDate));
             int callDuration = Integer.parseInt( managedCursor.getString(duration));
-            String dir = null;
 
             Contact contact = new Contact();
             contact.setPhoneNumber(phNumber);
             contact.setDurationTime(callDuration);
             contact.setName(callName);
             contacts.add(contact);
-            sb.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
-                    + dir + " \nCall Date:--- " + callDayTime
-                    + " \nCall duration in sec :--- " + callDuration);
-            sb.append("\n----------------------------------");
+
         }
-        //    managedCursor.close();
 
         // Sort later by phone.
         Collections.sort(contacts, Contact.COMPARE_BY_PHONE);
+
         return contacts;
     }
 
@@ -84,7 +74,6 @@ public class UtilsCursor {
                 String phoneID =   cursor.getString(cursor
                         .getColumnIndexOrThrow("_id"));
 
-                System.out.println("Kate phone phoneID = " + phoneID + " address" + phoneNumber);
                 Contact contact = new Contact(phoneID, phonePersonName, phoneNumber, 0);
                 lstContactsSMS = createListOfContacts(contactsTempSMS, contact, phoneNumber, counter);
 

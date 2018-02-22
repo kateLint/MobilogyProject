@@ -53,9 +53,11 @@ public class CustomContactAdapter extends  RecyclerView.Adapter<CustomContactAda
 		Contact contactLst = lstContactsSMS.get(position);
 		holder.tvContactName.setText(contactLst.getName());
 
+		//getting hours, minuts and seconds from time duration
 		int[] minuts = Utils.splitToComponentTimes(contactLst.getDurationTime());
 
-		holder.contactSMS.setText(""+contactLst.getSmsCount() );
+		holder.contactSMS.setText(""+contactLst.getSmsCount());
+
 		holder.durationCallTime.setText("hours :" +minuts[0] + " minuts: "+minuts[1] + " seconds :" + minuts[2]);
 		holder.tvContactNumber.setText(contactLst.getPhoneNumber());
 
@@ -104,7 +106,7 @@ public class CustomContactAdapter extends  RecyclerView.Adapter<CustomContactAda
 				Contact contact = new Contact(tag.toString(), color);
 
 				int isupdate = db.updateContact(contact);
-				System.out.println("Kate isupdate =" + isupdate);
+
 				if(isupdate == 0) {
 					db.addContact(contact);
 				}
@@ -148,8 +150,7 @@ public class CustomContactAdapter extends  RecyclerView.Adapter<CustomContactAda
 
 		private TextView tvContactName;
 		private TextView tvContactNumber;
-		private TextView callslayoutitem_contact_duration;
-		private  TextView contactSMS;
+		private TextView contactSMS;
 		private ImageView ivContactImage;
 		private Button pick_color_btn;
 		private RelativeLayout contact_list_element_main_rl;
@@ -169,8 +170,6 @@ public class CustomContactAdapter extends  RecyclerView.Adapter<CustomContactAda
 			ivContactImage = (ImageView) itemLayoutView.findViewById(R.id.ivContactImage);
 			pick_color_btn = (Button)itemLayoutView.findViewById(R.id.pick_color);
 			contact_list_element_main_rl = (RelativeLayout)itemLayoutView.findViewById(R.id.contact_list_element_main_rl);;
-
-
 		}
 
 	}

@@ -27,6 +27,7 @@ public class MainActivityDB extends FragmentActivity {
     private ArrayList<Contact> lstContactsSMS = new ArrayList<>();
     private List<Contact> lstContacts = new ArrayList<>();
     private ArrayList<Contact> lstContactsDuration = new ArrayList<>();
+    private int counter = 1;
 
 
     @Override
@@ -63,7 +64,9 @@ public class MainActivityDB extends FragmentActivity {
             @Override
             public void run()
             {
+                // concatinating between list of users and sms list, not all received sms from contacts
                 ArraysCompareUtils.joinArrays(lstContactsSMS, lstContacts);
+                // concatinatin between list of contacts and duration time
                 ArraysCompareUtils.joinArrays(lstContactsDuration, lstContacts);
 
                 handler.post(new Runnable()  //If you want to update the UI, queue the code on the UI thread
@@ -87,10 +90,9 @@ public class MainActivityDB extends FragmentActivity {
         counter = 1;
         ArrayList<Contact> durationList = new ArrayList<>();
         for(Contact contact : contactsDuration){
-            lstContactsDuration = createListOfContactsDuration(durationList, contact, contact.getPhoneNumber()) ;//  createListOfContacts(durationList, contact, contact.getPhoneNumber());
+            lstContactsDuration = createListOfContactsDuration(durationList, contact, contact.getPhoneNumber()) ;
         }
     }
-
 
 
     private void initializeListView(){
@@ -104,6 +106,10 @@ public class MainActivityDB extends FragmentActivity {
     }
 
 
+    /**
+     * Receiving contacts from phone
+     * @return
+     */
     private List<Contact> getContactsFromPhone(){
         List<Contact> list = new ArrayList<>();
         String sortOrder =  ContactsContract.Contacts.SORT_KEY_PRIMARY + " ASC";
@@ -127,6 +133,8 @@ public class MainActivityDB extends FragmentActivity {
             contact.setPhoneNumbersList(phoneNumber);
 
 
+            //if numbers are the same, can be if some saved on card and same saved on device
+            // don't repeat numbers
             if(list.isEmpty()) {
                 list.add(contact);
             }else{
@@ -143,8 +151,6 @@ public class MainActivityDB extends FragmentActivity {
         return list;
     }
 
-
-    private int counter = 1;
 
     private ArrayList<Contact> createListOfContactsDuration(ArrayList<Contact> contactsTemp, Contact contact, String phoneNumber){
         if(phoneNumber != null) {
