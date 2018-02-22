@@ -1,0 +1,123 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="DP_MINUS_5">-5dp</dimen>
+
+    <dimen name="DP0">0dp</dimen>
+    <dimen name="DP1">1dp</dimen>
+    <dimen name="DP1.5">1.5dp</dimen>
+    <dimen name="DP2">2dp</dimen>
+    <dimen name="DP4">4dp</dimen>
+    <dimen name="DP6">6dp</dimen>
+    <dimen name="DP8">8dp</dimen>
+
+    <dimen name="DP10">10dp</dimen>
+    <dimen name="DP14">14dp</dimen>
+    <dimen name="DP16">16dp</dimen>
+    <dimen name="DP18">18dp</dimen>
+    <dimen name="DP20">20dp</dimen>
+    <dimen name="DP22">22dp</dimen>
+    <dimen name="DP24">24dp</dimen>
+    <dimen name="DP26">26dp</dimen>
+    <dimen name="DP30">30dp</dimen>
+    <dimen name="DP34">34dp</dimen>
+    <dimen name="DP38">38dp</dimen>
+    <dimen name="DP44">44dp</dimen>
+    <dimen name="DP50">50dp</dimen>
+    <dimen name="DP54">54dp</dimen>
+    <dimen name="DP60">60dp</dimen>
+    <dimen name="DP80">80dp</dimen>
+    <dimen name="DP82">82dp</dimen>
+    <dimen name="DP90">90dp</dimen>
+    <dimen name="DP100">100dp</dimen>
+    <dimen name="DP104">104dp</dimen>
+    <dimen name="DP110">110dp</dimen>
+    <dimen name="DP115">115dp</dimen>
+
+
+    <dimen name="DP120">120dp</dimen>
+    <dimen name="DP130">130dp</dimen>
+    <dimen name="DP140">140dp</dimen>
+    <dimen name="DP144">144dp</dimen>
+    <dimen name="DP150">150dp</dimen>
+    <dimen name="DP156">156dp</dimen>
+    <dimen name="DP160">160dp</dimen>
+    <dimen name="DP180">180dp</dimen>
+    <dimen name="DP200">200dp</dimen>
+    <dimen name="DP220">220dp</dimen>
+    <dimen name="DP230">230dp</dimen>
+    <dimen name="DP250">250dp</dimen>
+    <dimen name="DP280">280dp</dimen>
+    <dimen name="DP300">300dp</dimen>
+    <dimen name="DP335">335dp</dimen>
+    <dimen name="DP340">340dp</dimen>
+    <dimen name="DP400">400dp</dimen>
+    <dimen name="DP450">450dp</dimen>
+
+
+    <dimen name="SP4">4sp</dimen>
+    <dimen name="SP6">6sp</dimen>
+    <dimen name="SP8">8sp</dimen>
+    <dimen name="SP10">10sp</dimen>
+    <dimen name="SP12">12sp</dimen>
+    <dimen name="SP13">13sp</dimen>
+    <dimen name="SP14">14sp</dimen>
+    <dimen name="SP16">16sp</dimen>
+    <dimen name="SP18">18sp</dimen>
+    <dimen name="SP20">20sp</dimen>
+    <dimen name="SP24">24sp</dimen>
+    <dimen name="SP26">26sp</dimen>
+    <dimen name="SP30">30sp</dimen>
+    <dimen name="SP32">32sp</dimen>
+    <dimen name="SP36">36sp</dimen>
+    <dimen name="SP46">46sp</dimen>
+    <dimen name="SP60">60sp</dimen>
+
+
+
+    <dimen name="DP_64">-64dp</dimen>
+    <dimen name="DP_2">-2dp</dimen>
+    <dimen name="MINUS_DP360">-360dp</dimen>
+    <dimen name="MINUS_DP380">-380dp</dimen>
+    <dimen name="MINUS_DP220">-220dp</dimen>
+    <dimen name="MINUS_DP200">-200dp</dimen>
+    <dimen name="MINUS_DP30">-30dp</dimen>
+    <dimen name="MINUS_DP10">-10dp</dimen>
+    <dimen name="MINUS_DP100">-100dp</dimen>
+    <dimen name="MINUS_DP300">-300dp</dimen>
+    <dimen name="MINUS_DP320">-320dp</dimen>
+    <dimen name="MINUS_DP70">-70dp</dimen>
+    <dimen name="MINUS_DP80">-80dp</dimen>
+    <dimen name="MINUS_DP170">-170dp</dimen>
+    <dimen name="MINUS_DP150">-150dp</dimen>
+    <dimen name="MINUS_DP440">-440dp</dimen>
+    <dimen name="MINUS_DP520">-520dp</dimen>
+    <dimen name="MINUS_DP250">-250dp</dimen>
+    <dimen name="MINUS_DP240">-240dp</dimen>
+    <dimen name="MINUS_DP580">-580dp</dimen>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <dimen name="SP10">10dip</dimen>
+    <dimen name="SP12">12dip</dimen>
+    <dimen name="SP13">13dip</dimen>
+    <dimen name="SP14">14dip</dimen>
+    <dimen name="SP16">16dip</dimen>
+    <dimen name="SP18">18dip</dimen>
+    <dimen name="SP20">20dip</dimen>
+    <dimen name="SP26">26dip</dimen>
+    <dimen name="SP30">30dip</dimen>
+    <dimen name="SP32">32dip</dimen>-->
+
+</resources>
