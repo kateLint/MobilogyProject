@@ -58,7 +58,7 @@ public class CustomContactAdapter extends  RecyclerView.Adapter<CustomContactAda
 
 		holder.contactSMS.setText(""+contactLst.getSmsCount());
 
-		holder.durationCallTime.setText("hours :" +minuts[0] + " minuts: "+minuts[1] + " seconds :" + minuts[2]);
+		holder.durationCallTime.setText("h :" +minuts[0] + " m: "+minuts[1] + " s :" + minuts[2]);
 		holder.tvContactNumber.setText(contactLst.getPhoneNumber());
 
 		String imageUri = contactLst.getImageUri();
