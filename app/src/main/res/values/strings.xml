@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MobilogyProj</string>
+    <string name="allow_contacts">Allow Contacts Read</string>
 </resources>

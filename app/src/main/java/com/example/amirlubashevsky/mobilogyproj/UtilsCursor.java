@@ -1,5 +1,6 @@
 package com.example.amirlubashevsky.mobilogyproj;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +10,8 @@ import android.provider.CallLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
+
 
 /**
  * Created by amirlubashevsky on 22/02/2018.

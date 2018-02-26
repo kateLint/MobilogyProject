@@ -4,11 +4,15 @@ package com.example.amirlubashevsky.mobilogyproj;
  * Created by amirlubashevsky on 18/02/2018.
  */
 
+        import android.Manifest;
+        import android.annotation.SuppressLint;
         import android.database.Cursor;
         import android.os.Bundle;
         import android.os.Handler;
         import android.provider.ContactsContract;
+        import android.support.annotation.NonNull;
         import android.support.v4.app.FragmentActivity;
+        import android.support.v7.app.AlertDialog;
         import android.support.v7.widget.DefaultItemAnimator;
         import android.support.v7.widget.DividerItemDecoration;
         import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +22,11 @@ package com.example.amirlubashevsky.mobilogyproj;
         import java.util.ArrayList;
         import java.util.List;
 
+        import permissions.dispatcher.NeedsPermission;
+        import permissions.dispatcher.RuntimePermissions;
+
+
+@RuntimePermissions
 public class MainActivityDB extends FragmentActivity {
     private RecyclerView lstContact;
     private CustomContactAdapter adapter;
@@ -30,6 +39,7 @@ public class MainActivityDB extends FragmentActivity {
     private int counter = 1;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +47,7 @@ public class MainActivityDB extends FragmentActivity {
 
         databaseHadler = new DatabaseHandler(MainActivityDB.this);
         initializeListView();
+        System.out.println("Kate oncREate");
 
         save_contacts = (Button)findViewById(R.id.save_contacts);
         save_contacts.setOnClickListener(new View.OnClickListener(){
@@ -47,15 +58,7 @@ public class MainActivityDB extends FragmentActivity {
                 saveToFile();
             }
         });
-
-        lstContactsSMS = UtilsCursor.readSMSMessages(getBaseContext());
-        createCallDurationList();
-
-        lstContacts = getContactsFromPhone();
-        adapter = new CustomContactAdapter(this,  databaseHadler, lstContacts);
-        lstContact.setAdapter(adapter);
-
-        workOnLists();
+        MainActivityDBPermissionsDispatcher.initializeALLWithPermissionCheck(this);
     }
 
     private void workOnLists(){
@@ -86,6 +89,7 @@ public class MainActivityDB extends FragmentActivity {
 
 
     private void createCallDurationList(){
+        lstContactsSMS = UtilsCursor.readSMSMessages(getBaseContext());
         ArrayList<Contact> contactsDuration = UtilsCursor.getCallDetails(MainActivityDB.this);
         counter = 1;
         ArrayList<Contact> durationList = new ArrayList<>();
@@ -95,14 +99,34 @@ public class MainActivityDB extends FragmentActivity {
     }
 
 
+    @NeedsPermission({Manifest.permission.READ_SMS,Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_CONTACTS})
+    void initializeALL() {
+        createCallDurationList();
+        lstContacts = getContactsFromPhone();
+        adapter = new CustomContactAdapter(this,  databaseHadler, lstContacts);
+        lstContact.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        workOnLists();
+    }
+
+
+    @SuppressLint("NeedOnRequestPermissionsResult")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        MainActivityDBPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
     private void initializeListView(){
-        lstContact = (RecyclerView) findViewById(R.id.lstContacts);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getBaseContext());
-        lstContact.setLayoutManager(mLayoutManager);
-        lstContact.setItemAnimator(new DefaultItemAnimator());
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(lstContact.getContext(),
-                mLayoutManager.getOrientation());
-        lstContact.addItemDecoration(dividerItemDecoration);
+
+            lstContact = (RecyclerView) findViewById(R.id.lstContacts);
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getBaseContext());
+            lstContact.setLayoutManager(mLayoutManager);
+            lstContact.setItemAnimator(new DefaultItemAnimator());
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(lstContact.getContext(),
+                    mLayoutManager.getOrientation());
+            lstContact.addItemDecoration(dividerItemDecoration);
+
     }
 
 
@@ -193,4 +217,17 @@ public class MainActivityDB extends FragmentActivity {
         t.start();
     }
 
+    public void permissionsReceived(int[] grantResults) {
+        if(grantResults.length == 3 ){
+            createCallDurationList();
+            lstContacts = getContactsFromPhone();
+            //  lstContacts = getContactsFromPhone();
+            adapter = new CustomContactAdapter(this,  databaseHadler, lstContacts);
+            lstContact.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            workOnLists();
+        }else{
+          //  MainActivityDBPermissionsDispatcher.initializeALLWithPermissionCheck(this);
+        }
+    }
 }
